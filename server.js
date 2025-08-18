@@ -1,13 +1,15 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
-const PORT = 4000;
+
+const PORT = process.env.PORT || 4000;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/todo').then(() => {
-    console.log('Connected to MongoDB');
-});
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 const todoSchema = new mongoose.Schema({
     id:String,
