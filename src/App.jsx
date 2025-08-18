@@ -13,7 +13,7 @@ function App() {
   },[])
 
   const fetchtodos = async ()=>{
-    const res = await axios.get('http://localhost:4000/items');
+    const res = await axios.get('https://todo-list-p7m0.onrender.com/items');
     setTasks(res.data)
   }
 
@@ -30,7 +30,7 @@ function App() {
       text: task,
       completed: false,
     }
-    const res = await axios.post('http://localhost:4000/items',newTask)
+    const res = await axios.post('https://todo-list-p7m0.onrender.com/items',newTask)
     setTasks([...tasks,res.data]);
     setInput('');
   }
@@ -45,7 +45,7 @@ function App() {
   }
 
   async function updateOnServer(updatedtask){
-    await axios.put(`http://localhost:4000/items/${updatedtask.id}`,updatedtask)
+    await axios.put(`https://todo-list-p7m0.onrender.com/items/${updatedtask.id}`,updatedtask)
   }
 
   function editTask(id){
@@ -75,7 +75,7 @@ function App() {
   }
 
   async function deleteTask(id){
-    await axios.delete(`http://localhost:4000/items/${id}`)
+    await axios.delete(`https://todo-list-p7m0.onrender.com/items/${id}`)
     setTasks(tasks.filter(task => task.id !== id ));   
   }
 
